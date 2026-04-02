@@ -26,7 +26,7 @@
         <td class="p-2"><%= m.nim %></td>
         <td class="p-2 flex gap-2">
           <a href="/mahasiswa/edit/<%= m.id %>" class="bg-yellow-400 text-white px-3 py-1 rounded">Edit</a>
-          <a href="/mahasiswa/delete/<%= m.id %>" onclick="return confirmDelete()" class="bg-red-500 text-white px-3 py-1 rounded">Hapus</a>
+          <a href="#" onclick="confirmDelete('/mahasiswa/delete/<%= m.id %>')" class="bg-red-500 text-white px-3 py-1 rounded">Hapus</a>
         </td>
       </tr>
       <% }) %>
@@ -34,7 +34,7 @@
   </table>
 </div>
 <script>
-function confirmDelete() {
+function confirmDelete(url) {
   Swal.fire({
     title: 'Yakin?',
     text: 'Data akan dihapus permanen!',
@@ -43,8 +43,7 @@ function confirmDelete() {
     confirmButtonText: 'Ya, hapus!',
     cancelButtonText: 'Cancel'
   }).then((result) => {
-    if (result.isConfirmed) window.location.href = this.href;
+    if (result.isConfirmed) window.location.href = url;
   });
-  return false;
 }
 </script>
