@@ -1,0 +1,50 @@
+<% if (success) { %>
+  <div class="bg-green-100 text-green-700 p-3 rounded mb-4"><%= success %></div>
+<% } %>
+<% if (error) { %>
+  <div class="bg-red-100 text-red-700 p-3 rounded mb-4"><%= error %></div>
+<% } %>
+<div class="bg-white p-6 rounded-2xl shadow">
+  <div class="flex justify-between mb-4">
+    <h2 class="text-xl font-bold">Data Mahasiswa</h2>
+    <a href="/mahasiswa/create" class="bg-blue-500 text-white px-4 py-2 rounded">+ Tambah</a>
+  </div>
+  <table class="w-full table-auto">
+    <thead class="bg-gray-100">
+      <tr>
+        <th class="p-2 text-left">No</th>
+        <th class="p-2 text-left">Nama</th>
+        <th class="p-2 text-left">NIM</th>
+        <th class="p-2 text-left">Aksi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% mahasiswa.forEach((m, i) => { %>
+      <tr class="border-t">
+        <td class="p-2"><%= i + 1 %></td>
+        <td class="p-2"><%= m.nama %></td>
+        <td class="p-2"><%= m.nim %></td>
+        <td class="p-2 flex gap-2">
+          <a href="/mahasiswa/edit/<%= m.id %>" class="bg-yellow-400 text-white px-3 py-1 rounded">Edit</a>
+          <a href="/mahasiswa/delete/<%= m.id %>" onclick="return confirmDelete()" class="bg-red-500 text-white px-3 py-1 rounded">Hapus</a>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+<script>
+function confirmDelete() {
+  Swal.fire({
+    title: 'Yakin?',
+    text: 'Data akan dihapus permanen!',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Ya, hapus!',
+    cancelButtonText: 'Cancel'
+  }).then((result) => {
+    if (result.isConfirmed) window.location.href = this.href;
+  });
+  return false;
+}
+</script>
