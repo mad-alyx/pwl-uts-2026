@@ -1,7 +1,35 @@
 <div class="grid grid-cols-3 gap-4 mb-6">
   <div class="bg-white p-6 rounded-2xl shadow">
     <p class="text-gray-500">Total Mahasiswa</p>
-    <p class="text-3xl font-bold text-blue-600">0</p>
+    <p class="text-3xl font-bold text-blue-600"><%= totalMahasiswa %></p>
+  </div>
+  <div class="bg-white p-6 rounded-2xl shadow">
+    <p class="text-gray-500">Total Dosen</p>
+    <p class="text-3xl font-bold text-green-600"><%= totalDosen %></p>
+  </div>
+  <div class="bg-white p-6 rounded-2xl shadow">
+    <p class="text-gray-500">Total Matkul</p>
+    <p class="text-3xl font-bold text-purple-600"><%= totalMatkul %></p>
   </div>
 </div>
-<p class="text-gray-600"><%= message %></p>
+<div class="bg-white p-6 rounded-2xl shadow">
+  <h2 class="text-lg font-bold mb-4">Data Mahasiswa</h2>
+  <table class="w-full table-auto">
+    <thead class="bg-gray-100">
+      <tr>
+        <th class="p-2 text-left">No</th>
+        <th class="p-2 text-left">Nama</th>
+        <th class="p-2 text-left">NIM</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% mahasiswa.forEach((m, i) => { %>
+      <tr class="border-t">
+        <td class="p-2"><%= i + 1 %></td>
+        <td class="p-2"><%= m.nama %></td>
+        <td class="p-2"><%= m.nim %></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>

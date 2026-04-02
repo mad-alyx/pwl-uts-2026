@@ -13,3 +13,15 @@ model Mahasiswa {
   nama  String
   nim   String
 }
+
+model Dosen {
+  id   Int    @id @default(autoincrement())
+  nama String
+  nip  String
+}
+
+model Matkul {
+  id   Int    @id @default(autoincrement())
+  nama String
+  kode String
+}
